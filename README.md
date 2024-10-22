@@ -11,7 +11,7 @@ public class Employee(string firstName, string lastName)
     }
 }
 ```
-2. Collection expressions
+## 2. Collection expressions
 ```
  List<int> numbers = new List<int> { 1, 2, 3, 4, 5 };
  foreach (var number in numbers)
@@ -37,7 +37,31 @@ public class Employee(string firstName, string lastName)
  int[] row2 = [7, 8, 9];
  int[][] twoDFromVariables = [row0, row1, row2];
 ```
-4. ref readonly parameters
+## 3. ref readonly parameters
+
+```
+public struct Point
+{
+    public int X { get; }
+    public int Y { get; }
+
+    public Point(int x, int y)
+    {
+        X = x;
+        Y = y;
+    }
+
+    public void PrintCoordinates(ref readonly Point point)
+    {
+        // We can read the values but cannot modify them
+        Console.WriteLine($"X: {point.X}, Y: {point.Y}");
+    }
+}
+
+ Point point = new Point(5, 10);
+ point.PrintCoordinates(ref point);
+```
+
 5. Default lambda parameters
 6. Alias any type
 7. Inline arrays
