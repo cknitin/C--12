@@ -2,6 +2,7 @@
 All new C# 12 features
 
 ## 1. Primary constructors
+
 ```
 public class Employee(string firstName, string lastName)
 {
@@ -11,7 +12,9 @@ public class Employee(string firstName, string lastName)
     }
 }
 ```
+
 ## 2. Collection expressions
+
 ```
  List<int> numbers = new List<int> { 1, 2, 3, 4, 5 };
  foreach (var number in numbers)
@@ -37,6 +40,7 @@ public class Employee(string firstName, string lastName)
  int[] row2 = [7, 8, 9];
  int[][] twoDFromVariables = [row0, row1, row2];
 ```
+
 ## 3. ref readonly parameters
 
 ```
@@ -62,9 +66,89 @@ public struct Point
  point.PrintCoordinates(ref point);
 ```
 
-5. Default lambda parameters
-6. Alias any type
-7. Inline arrays
-8. Experimental attribute
-9. Interceptors
+## 4. Default lambda parameters
+
+```
+public void ShowDefaultLambdaParameters()
+{
+    var IncrementBy = static (int source = 20, int increment = 1) =>
+    {
+        return source + increment;
+    };
+
+    Console.WriteLine(IncrementBy(10));     // 11
+    Console.WriteLine(IncrementBy(10, 20)); // 30
+    Console.WriteLine(IncrementBy()); // 21
+}
+```
+
+## 5. Alias any type
+
+```
+using MyAlias = System.Console;
+
+namespace CSharp12._5._Alias_any_type
+{
+    using x1 = int;
+    internal class Demo4
+    {
+        public void PrintMessage()
+        {
+            x1 a = 10;
+            int b = 20;
+
+            MyAlias.WriteLine("Sum = a + b - ", a + b);
+        }
+    }
+}
+```
+
+## 6. Inline arrays
+
+```
+ public class Demo5
+ {
+     [System.Runtime.CompilerServices.InlineArray(10)]
+     public struct Buffer
+     {
+         private int _element0;
+     }
+
+     public void ShowInlineArray()
+     {
+         var buffer = new Buffer();
+         for (int i = 0; i < 10; i++)
+         {
+             buffer[i] = i;
+         }
+
+         foreach (var i in buffer)
+         {
+             Console.WriteLine(i);
+         }
+     }
+
+ }
+```
+
+## 7. Experimental attribute
+
+```
+ [Experimental(diagnosticId: "Test001")]
+ public class Demo6
+ {
+     public void ExperimentalMethod()
+     {
+         Console.WriteLine("This is a Experimental Method new feature in C# 12");
+     }
+ }
+
+ #pragma warning disable Test001
+     Demo6 demo6 = new Demo6();
+     demo6.ExperimentalMethod();
+ #pragma warning restore Test001
+
+```
+
+## 8. Interceptors
 
