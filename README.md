@@ -105,6 +105,24 @@ namespace CSharp12._5._Alias_any_type
 
 ## 6. Inline arrays
 
+traditional approach
+
+```
+int sum = 0;
+int[] numbers = new int[] { 1, 2, 3, 4, 5 };
+for (int i = 0; i < numbers.Length; i++)
+{
+    sum += numbers[i];
+}
+```
+
+inline arrays
+
+```
+int sum = Array.Sum([1, 2, 3, 4, 5]);
+```
+
+
 ```
  public class Demo5
  {
